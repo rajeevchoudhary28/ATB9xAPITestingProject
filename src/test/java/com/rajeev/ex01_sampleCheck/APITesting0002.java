@@ -3,7 +3,7 @@ package com.rajeev.ex01_sampleCheck;
 import io.restassured.RestAssured;
 
 public class APITesting0002 {
-    public static void main(String[] Args){
+    public static void main(String[] Args) {
 
 
         // Gherkin Syntax:
@@ -17,10 +17,10 @@ public class APITesting0002 {
 
         RestAssured
                 .given()
-                    .baseUri("https://api.zippopotam.us")
-                    .basePath("/IN/184121")
+                .baseUri("https://api.zippopotam.us")
+                .basePath("/IN/184121")
                 .when()
-                    .get()
+                .get()
                 .then().log().all().statusCode(200);
 
 
