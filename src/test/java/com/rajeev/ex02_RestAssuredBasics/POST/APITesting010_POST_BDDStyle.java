@@ -1,42 +1,33 @@
 package com.rajeev.ex02_RestAssuredBasics.POST;
 
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
 public class APITesting010_POST_BDDStyle {
 
+    @Description("Verify the POST request Positive")
     @Test
-    public void test_GET_Req_POSITIVE() {
-        String pin_code = "184121";
-        RestAssured
-                .given()
-                .baseUri("https://api.zippopotam.us")
-                .basePath("/IN/" + pin_code)
-                .when()
-                .log().
-                all()
-                .get()
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
-    }
+    public void test_POST_BDDStyle() {
+        // Url, Body, header
 
-    @Test
-    public void test_GET_Req_Negative() {
-        String pincode = "-1";
-        RestAssured
-                .given()
-                .baseUri("https://api.zippopotam.us")
-                .basePath("/IN/" + pincode)
-                .when()
-                .log().
-                all()
-                .get()
-                .then()
-                .log()
-                .all()
-                .statusCode(200);
+        // https://restful-booker.herokuapp.com/auth
+        // Content-Type : application/ json
+        //{"username": "admin",
+        //"password": "password123"}
+
+        String payload = "{\"username\": \"admin\",\n" +
+                "\"password\": \"password123\"}";
+
+        RestAssured.given()
+                .baseUri("https://restful-booker.herokuapp.com")
+                .basePath("/auth")
+                .contentType(ContentType.JSON)
+                .log().all().body(payload)
+                .when().log().all().post()
+                .then().log().all().statusCode(200);
+
 
     }
 }

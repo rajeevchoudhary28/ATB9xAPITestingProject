@@ -1,6 +1,8 @@
 package com.rajeev.ex02_RestAssuredBasics.POST;
 
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
@@ -11,40 +13,25 @@ public class APITesting009_POST_NonBDDStyle {
     RequestSpecification r;
     Response response;
     ValidatableResponse vr;
+
+    @Description("Verify the post req positive")
     @Test
-    public void test_GET_NonBDDStyle(){
+    public void test_POST_NonBDDStyle() {
 
-        // Rest Assured Interfaces
-        String pin_code = "184121";
-        r = RestAssured
-                .given();
+        String payload = "{\"username\": \"admin\",\n" +
+                "\"password\": \"password123\"}";
 
-        r.baseUri("https://api.zippopotam.us");
-        r.basePath("/IN/" + pin_code);
-        response = r.when().log().all().get();
+        r.baseUri("https://restful-booker.herokuapp.com");
+        r.basePath("/auth");
+        r.contentType(ContentType.JSON).log().all();
+        r.body(payload);
 
-        vr = response.then()
-                .log()
-                .all()
-                .statusCode(200);
+        Response response1 = r.when().log().all().post();
 
-    }
-    
-    @Test
-    public  void test_NonBDDStyleGET_negative(){
+        ValidatableResponse vr = response1.then().log().all().statusCode(200);
 
-        String pincode = "-1";
-        r = RestAssured
-                .given();
 
-        r.baseUri("https://api.zippopotam.us");
-        r.basePath("/IN/" + pincode);
-        response = r.when().log().all().get();
 
-        vr = response.then()
-                .log()
-                .all()
-                .statusCode(200);
 
     }
 }

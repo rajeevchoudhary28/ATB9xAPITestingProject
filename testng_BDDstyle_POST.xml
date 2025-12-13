@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Rajeev.Chaudhary/IdeaProjects/ATB9xAPITestingProject">
+        <classes>
+            <class name="com.rajeev.ex02_RestAssuredBasics.POST.APITesting010_POST_BDDStyle">
+<!--                <methods>-->
+<!--                    <include name="test_GET_Req_POSITIVE"/>-->
+<!--                    <include name="test_GET_Req_Negative"/>-->
+<!--                </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>
