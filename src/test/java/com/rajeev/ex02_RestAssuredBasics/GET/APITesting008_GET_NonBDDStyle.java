@@ -1,8 +1,8 @@
 package com.rajeev.ex02_RestAssuredBasics.GET;
 
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.response.Validatable;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
@@ -12,6 +12,7 @@ public class APITesting008_GET_NonBDDStyle {
     RequestSpecification r;
     Response response;
     ValidatableResponse vr;
+    @Description("To verify positive test case")
     @Test
     public void test_GET_NonBDDStyle(){
 
@@ -31,6 +32,7 @@ public class APITesting008_GET_NonBDDStyle {
 
     }
 
+    @Description("To verify negative test case")
     @Test
     public  void test_NonBDDStyleGET_negative(){
 
